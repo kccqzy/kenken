@@ -2,10 +2,6 @@
 
 length_flipped(N, L) :- length(L, N).
 
-numbers_up_to(0, []).
-numbers_up_to(N, [N|R]) :-
-    M + 1 #= N, numbers_up_to(M, R).
-
 transpose([], []).
 transpose([F|Fs], Ts) :-
     transpose(F, [F|Fs], Ts).
@@ -51,10 +47,10 @@ kenken(N, C, G) :-
     maplist(maplist(#>=(N)), G),
     maplist(maplist(#=<(1)), G),
     apply_all_constraints(C, G),
-    numbers_up_to(N, AllNumbers),
-    maplist(permutation(AllNumbers), G),
+    maplist(fd_all_different, G),
     transpose(G, GT),
-    maplist(permutation(AllNumbers), GT).
+    maplist(fd_all_different, GT),
+    maplist(fd_labeling, G).
 
 %% Test cases
 
