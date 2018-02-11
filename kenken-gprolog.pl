@@ -1,5 +1,7 @@
 %% -*- mode: prolog; -*-
 
+%% NOTE This file is meant to be used with GNU Prolog.
+
 length_flipped(N, L) :- length(L, N).
 
 transpose([], []).
