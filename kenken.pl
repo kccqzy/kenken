@@ -89,3 +89,10 @@ test2(T) :-
             /(2, [6|4], [6|5])
         ], T
     ).
+
+dotests :-
+    findall(T0, test0(T0), T0s), maplist(portray_clause, T0s), nl,
+    test1(T1), portray_clause(T1), nl,
+    test2(T2), portray_clause(T2), nl.
+
+:- initialization(dotests).
